@@ -24,10 +24,10 @@ rollbar.log('Hello world!')
 
 const students = ['Jimmy', 'Timothy', 'Jimothy']
 
-app.use((err, req, res, next) => {
-    rollbar.error(err)
-    res.status(500).send('Something went wrong')
-})
+// app.use((err, req, res, next) => {
+//     rollbar.error(err)
+//     res.status(500).send('Something went wrong')
+// })
 
 app.get('/', (req, res) => {
     rollbar.info('served the html')
