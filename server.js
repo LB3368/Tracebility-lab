@@ -24,6 +24,11 @@ rollbar.log('Hello world!')
 
 const students = ['Jimmy', 'Timothy', 'Jimothy']
 
+app.use((err, req, res, next) => {
+    rollbar.error(err)
+    res.status(500).send('Something went wrong')
+})
+
 app.get('/', (req, res) => {
     rollbar.info('served the html')
     res.sendFile(path.join(__dirname, '/index.html'))
@@ -69,4 +74,4 @@ app.delete('/api/students/:index', (req, res) => {
 
 const port = process.env.PORT || 5050
 
-app.listen(4000, () => console.log(`server is running on ${port}`))
+app.listen(port, () => console.log(`server is running on ${port}`))
